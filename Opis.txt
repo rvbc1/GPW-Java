@@ -1,0 +1,6 @@
+Operacje gieldowe
+Srednie dzienne miesieczne itd
+Wynik w int lub nowa kolejcja
+Stream
+Pownanie jakosci dzialania
+Paralel streAm istotne abybylo
