@@ -8,8 +8,6 @@ import java.util.List;
 public class CSVReader {
 
     public static List<GPWIndex> read(String filename) {
-
-        //String csvFile = "gpw/2000-01-03.csv";
         String[] filename_path = filename.split("/");
         String file = filename_path[filename_path.length - 1];
         String dateFromFilename = file.replaceFirst("[.][^.]+$", "");
