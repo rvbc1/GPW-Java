@@ -86,8 +86,6 @@ public class GPWDownloader {
 
         DateTimeFormatter formater = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-        //String s = "2005-05-01";
-        //String en = "2020-05-23";
         LocalDate start = LocalDate.parse(s);
         LocalDate end = LocalDate.parse(en);
 

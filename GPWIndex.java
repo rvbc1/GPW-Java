@@ -69,24 +69,4 @@ public class GPWIndex implements Comparable<GPWIndex>{
     public int compareTo(GPWIndex o) {
         return nazwa.compareTo(o.nazwa);
     }
-
-    // @Override
-    // public boolean equals(Object o) {
-    // if (o == null || o.getClass() != getClass())
-    // return false;
-    // GPWIndex p = (GPWIndex) o;
-    // return p.nazwa.equals(nazwa);
-    // }
-
-    // @Override
-    // public boolean equals(final Object obj)
-    // {
-    // if ( obj == null || obj == this || !(obj instanceof GPWIndex) )
-    // return false;
-
-    // GPWIndex otherCard = (GPWIndex) obj;
-
-    // if (!otherCard.nazwa.equals(this.nazwa)) return false;
-    // return true;
-    // }
 }
