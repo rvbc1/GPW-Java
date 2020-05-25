@@ -3,7 +3,7 @@ import java.time.LocalDate;
 public class GPWIndex implements Comparable<GPWIndex>{
     String nazwa;
     private String waluta;
-    float otwarcie;
+    private float otwarcie;
     private float max;
     private float min;
     private float zamknięcie;
@@ -51,6 +51,10 @@ public class GPWIndex implements Comparable<GPWIndex>{
         return false;
     }
 
+    public float getOpenValue(){
+        return otwarcie;
+    }
+
     @Override
     public String toString() {
         return nazwa;
@@ -63,7 +67,6 @@ public class GPWIndex implements Comparable<GPWIndex>{
 
     @Override
     public int compareTo(GPWIndex o) {
-        // TODO Auto-generated method stub
         return nazwa.compareTo(o.nazwa);
     }
 

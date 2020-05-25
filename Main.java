@@ -24,7 +24,7 @@ public class Main {
 
         // GPWDownloader.download(start_string, end_string);
         loadAllData();
-
+        System.out.println(csvData.size());
 
         // for(int i = 0; i < csvData.size(); i++){
         // // for(int j = 0; j < csvData.get(i).size(); j++){
@@ -33,9 +33,6 @@ public class Main {
         // // }
         // }
 
-
-
-
         // Create the list with duplicates.
         // List<String> listAll = Arrays.asList("CO2", "CH4", "SO2", "CO2", "CH4",
         // "SO2", "CO2", "CH4", "SO2");
@@ -43,9 +40,24 @@ public class Main {
         // // Create a list with the distinct elements using stream.
         List<GPWIndex> uniqueGPW = csvData.stream().distinct().sorted().collect(Collectors.toList());
 
-        for(int i = 0; i < uniqueGPW.size(); i++){
-            System.out.println(uniqueGPW.get(i).nazwa);
+        String name = "ZYWIEC";
+        double sum = 0.0;
+        int il = 0;
+        for (int i = 0; i < uniqueGPW.size(); i++) {
+            final int x = i;
+            double avrg = csvData.stream().filter(gpw -> gpw.nazwa.equals(uniqueGPW.get(x).nazwa)).mapToDouble(GPWIndex::getOpenValue).average().orElse(Double.NaN);
+            System.out.println("Avrg open value for " + uniqueGPW.get(i).nazwa + " is: " + avrg);
         }
+
+        // for (int i = 0; i < csvData.size(); i++) {
+        //     if (csvData.get(i).nazwa.equals(name)) {
+        //         sum += csvData.get(i).getOpenValue();
+        //         il++;
+        //         System.out.println("mamy to " + il + " | " + i);
+        //     }
+        // }
+
+        //System.out.println("vale for " + name + " is: " + (sum / il) + " " + il);
 
         // @Override
         // public int hashCode() {
@@ -82,8 +94,7 @@ public class Main {
     public static void loadAllData() {
         try (Stream<Path> walk = Files.walk(Paths.get("gpw/"))) {
 
-            List<String> result = walk.map(x -> x.toString()).filter(f -> f.endsWith(".csv"))
-                    .collect(Collectors.toList());
+            List<String> result = walk.map(x -> x.toString()).filter(f -> f.endsWith(".csv")).collect(Collectors.toList());
             result.forEach((n) -> makeIndex(n));
         } catch (IOException e) {
             e.printStackTrace();
